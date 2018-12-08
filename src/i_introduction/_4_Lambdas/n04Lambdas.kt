@@ -11,7 +11,7 @@ fun example() {
     sum(1, square(2)) == 5
 }
 
-fun todoTask4(collection: Collection<Int>): Nothing = TODO(
+fun todoTask4(collection: Collection<Int>): Collection<Int> = TODO(
     """
         Task 4.
         Rewrite 'JavaCode4.task4()' in Kotlin using lambdas:
@@ -22,4 +22,9 @@ fun todoTask4(collection: Collection<Int>): Nothing = TODO(
     documentation = doc4(),
     references = { JavaCode4().task4(collection) })
 
-fun task4(collection: Collection<Int>): Boolean = todoTask4(collection)
+fun containsEven(collection: Collection<Int>) : Boolean {
+    val result = collection.filter{x : Int -> x % 2 == 0}
+    return result.isNotEmpty()
+}
+
+fun task4(collection: Collection<Int>): Boolean = containsEven(collection)
