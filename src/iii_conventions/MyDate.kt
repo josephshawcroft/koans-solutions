@@ -40,5 +40,16 @@ operator fun DateRange.iterator(): Iterator<MyDate> = object : Iterator<MyDate> 
     }
 }
 
+operator fun MyDate.plus(interval: TimeInterval) : MyDate {
+    return this.addTimeIntervals(interval, 1)
+}
+
+operator fun MyDate.plus(interval: RepeatedTimeInterval) : MyDate {
+    return this.addTimeIntervals(interval.ti, interval.n)
+}
 
 class DateRange(val start: MyDate, val endInclusive: MyDate)
+
+class RepeatedTimeInterval(val ti: TimeInterval, val n: Int)
+
+operator fun TimeInterval.times(int : Int) : RepeatedTimeInterval = RepeatedTimeInterval(this, int)
